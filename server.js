@@ -21,7 +21,7 @@ db.once('open',()=>{
     console.log('siamo connessi a mongo Atlas!');
 })
 
-
+app.use(express.static(__dirname+'/public'))
 app.use(express.urlencoded({extended:false}))
 
 app.set('view engine','ejs');
