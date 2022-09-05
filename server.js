@@ -2,6 +2,15 @@ if(process.env.NODE_ENV!='production'){
     require('dotenv').config()
 }
 
+if(process.env.NODE.ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'front_end', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'front_end', 'build', 'index.html'))
+    });
+    
+  }
+
 const express=require('express');
 const app=express();
 
@@ -21,7 +30,7 @@ db.once('open',()=>{
     console.log('siamo connessi a mongo Atlas!');
 })
 
-app.use(express.static(__dirname+'/public'))
+
 app.use(express.urlencoded({extended:false}))
 
 app.set('view engine','ejs');
