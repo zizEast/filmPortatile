@@ -1,0 +1,10 @@
+
+    <%authors.forEach(autore=>{%>
+        <div>
+            <p><%=autore.name%></p>
+            <form action="/authors/<%=autore.id%>?_method=DELETE" method="post">
+                <button type="submit">cancella autore</button>
+            </form>
+        </div>
+    
+    <%})%>
